@@ -17,7 +17,7 @@ RUN mvn package -DskipTests
 FROM amazoncorretto:17-alpine
 
 # Copy the built artifact from the builder stage
-COPY --from=builder /target/spring-boot-application.jar /app/spring-boot-application.jar
+COPY --from=builder /target/jvm-profiling-demo-0.0.1-SNAPSHOT.jar /app/spring-boot-application.jar
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "/app/spring-boot-application.jar"]
