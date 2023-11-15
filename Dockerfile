@@ -1,0 +1,24 @@
+# Stage 1: Build the application
+FROM maven:3.8.1-jdk-11 as builder
+
+# Copy the project files to the container
+COPY ./pom.xml ./pom.xml
+
+# Download all required dependencies into one layer
+RUN mvn dependency:go-offline -B
+
+# Copy your other files
+COPY ./src ./src
+
+# Build the application
+RUN mvn package -DskipTests
+
+# Stage 2: Create the runtime image
+FROM amazoncorretto:17-alpine
+
+# Copy the built artifact from the builder stage
+COPY --from=builder /target/spring-boot-application.jar /app/spring-boot-application.jar
+
+# Run the application
+ENTRYPOINT ["java", "-jar", "/app/spring-boot-application.jar"]
+
