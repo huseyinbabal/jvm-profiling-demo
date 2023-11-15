@@ -1,5 +1,5 @@
 # Stage 1: Build the application
-FROM maven:3.8.1-jdk-11 as builder
+FROM maven:3.9-amazoncorretto-17 as builder
 
 # Copy the project files to the container
 COPY ./pom.xml ./pom.xml
