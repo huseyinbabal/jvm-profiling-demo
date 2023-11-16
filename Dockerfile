@@ -17,6 +17,8 @@ RUN mvn package -DskipTests
 FROM amazoncorretto:17-alpine
 
 # Install async profiler
+RUN apk add --no-cache curl tar
+
 ARG ASYNC_PROFILER_VERSION="2.6"
 
 RUN cd /tmp && \
