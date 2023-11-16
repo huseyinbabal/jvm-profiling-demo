@@ -55,4 +55,46 @@ class LeakController {
 			.build();
 		HttpClient.newBuilder().build().send(request, HttpResponse.BodyHandlers.ofString());
 	}
+
+	@GetMapping("/cpu")
+	public String cpu() {
+		int numThreads = 2; // Use a fixed number of threads to control the load
+		long workTime = 100; // Time in milliseconds for which the thread will do the work
+		long sleepTime = 100; // Time in milliseconds for which the thread will sleep
+		for (int i = 0; i < numThreads; i++) {
+			new Thread(new ControlledLoadTask(workTime, sleepTime)).start();
+		}
+		return "CPU intensive tasks Triggered";
+	}
+}
+
+class ControlledLoadTask implements Runnable {
+	private final long workTime;
+	private final long sleepTime;
+
+	public ControlledLoadTask(long workTime, long sleepTime) {
+		this.workTime = workTime;
+		this.sleepTime = sleepTime;
+	}
+
+	@Override
+	public void run() {
+		while (!Thread.currentThread().isInterrupted()) {
+			long startTime = System.currentTimeMillis();
+
+			// Work phase
+			while (System.currentTimeMillis() - startTime < workTime) {
+				double value = Math.random() * Math.random();
+				value = Math.sqrt(value) * Math.tan(value); // Some CPU-intensive task
+			}
+
+			// Sleep phase
+			try {
+				Thread.sleep(sleepTime);
+			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
+				System.out.println("Thread interrupted");
+			}
+		}
+	}
 }
