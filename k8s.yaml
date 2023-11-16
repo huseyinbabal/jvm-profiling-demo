@@ -25,6 +25,7 @@ spec:
             limits:
               memory: "1Gi"
               cpu: "1"
+          imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service

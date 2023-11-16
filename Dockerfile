@@ -20,5 +20,5 @@ FROM amazoncorretto:17-alpine
 COPY --from=builder /target/jvm-profiling-demo-0.0.1-SNAPSHOT.jar /app/spring-boot-application.jar
 
 # Run the application
-ENTRYPOINT ["java", "-Dcom.sun.management.jmxremote.rmi.port=9090" "-Dcom.sun.management.jmxremote=true" "-Dcom.sun.management.jmxremote.port=9090" "-Dcom.sun.management.jmxremote.ssl=false" "-Dcom.sun.management.jmxremote.authenticate=false" "-Dcom.sun.management.jmxremote.local.only=false" "-jar", "/app/spring-boot-application.jar"]
+ENTRYPOINT ["java", "-Dcom.sun.management.jmxremote.rmi.port=9090", "-Dcom.sun.management.jmxremote=true", "-Dcom.sun.management.jmxremote.port=9090", "-Dcom.sun.management.jmxremote.ssl=false", "-Dcom.sun.management.jmxremote.authenticate=false", "-Dcom.sun.management.jmxremote.local.only=false", "-jar", "/app/spring-boot-application.jar"]
 
