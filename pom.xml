@@ -27,6 +27,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.github.krzysztofslusarski</groupId>
+			<artifactId>continuous-async-profiler-spring-starter</artifactId>
+			<version>2.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
