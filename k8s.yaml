@@ -16,7 +16,7 @@ spec:
         - name: spring-boot-app
           image: ghcr.io/huseyinbabal/jvm-profiling-demo:main
           ports:
-            - containerPort: 8080
+            - containerPort: 8081
             - containerPort: 9090
           resources:
             requests:
@@ -38,4 +38,4 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8080
+      targetPort: 8081
