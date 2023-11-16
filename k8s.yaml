@@ -33,7 +33,7 @@ metadata:
   name: spring-boot-service
   annotations:
     prometheus.io/path: "/actuator/prometheus"
-    prometheus.io/port: "8080"
+    prometheus.io/port: "8081"
     prometheus.io/scrape: "true"
 spec:
   type: LoadBalancer
