@@ -31,10 +31,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: spring-boot-service
-  annotations:
-    prometheus.io/path: "/actuator/prometheus"
-    prometheus.io/port: "8081"
-    prometheus.io/scrape: "true"
+  labels:
+    prometheus-monitoring: 'true'
 spec:
   type: LoadBalancer
   selector:
@@ -42,4 +40,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
+      name: http
       targetPort: 8081

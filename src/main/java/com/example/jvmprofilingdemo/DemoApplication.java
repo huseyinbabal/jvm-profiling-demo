@@ -10,8 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.krzysztofslusarski.asyncprofiler.ContinuousAsyncProfilerConfiguration;
+import io.micrometer.core.instrument.MeterRegistry;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCustomizer;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -96,5 +100,14 @@ class ControlledLoadTask implements Runnable {
 				System.out.println("Thread interrupted");
 			}
 		}
+	}
+}
+
+@Configuration
+class MetricsConfiguration {
+	@Bean
+	MeterRegistryCustomizer<MeterRegistry> configurer(
+		@Value("${spring.application.name}") String applicationName) {
+		return (registry) -> registry.config().commonTags("application", applicationName);
 	}
 }
