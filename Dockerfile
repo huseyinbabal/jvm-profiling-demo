@@ -19,7 +19,7 @@ FROM amazoncorretto:17-alpine
 # Install async profiler
 RUN apk add --no-cache curl tar libstdc++
 
-ARG ASYNC_PROFILER_VERSION="2.9"
+ARG ASYNC_PROFILER_VERSION="3.0"
 
 RUN cd /tmp && \
     curl -L https://profiler.tools/builds/async-profiler-${ASYNC_PROFILER_VERSION}-ea-linux-musl-x64.tar.gz -o async-profiler.tar.gz && \
