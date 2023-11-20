@@ -17,7 +17,7 @@ spec:
           image: ghcr.io/huseyinbabal/jvm-profiling-demo:main
           ports:
             - containerPort: 8081
-            - containerPort: 9090
+            - containerPort: 9010
           resources:
             requests:
               memory: "512Mi"
