@@ -33,7 +33,7 @@ ENV PATH="/opt/async-profiler:${PATH}"
 COPY --from=builder /target/jvm-profiling-demo-0.0.1-SNAPSHOT.jar /app/spring-boot-application.jar
 
 # Set JMX envs
-ENV JAVA_TOOL_OPTIONS "-Dcom.sun.management.jmxremote \
+ENV JAVA_TOOL_OPTIONS_TEMP "-Dcom.sun.management.jmxremote \
                      -Dcom.sun.management.jmxremote.authenticate=false \
                      -Dcom.sun.management.jmxremote.ssl=false \
                      -Dcom.sun.management.jmxremote.local.only=false \
