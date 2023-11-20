@@ -27,7 +27,7 @@ RUN cd /tmp && \
     mv /opt/async-profiler-${ASYNC_PROFILER_VERSION}-ea-linux-musl-x64 /opt/async-profiler && \
     rm /tmp/async-profiler.tar.gz
 
-ENV PATH="/opt/async-profiler:${PATH}"
+ENV PATH="/opt/async-profiler/bin:${PATH}"
 
 # Copy the built artifact from the builder stage
 COPY --from=builder /target/jvm-profiling-demo-0.0.1-SNAPSHOT.jar /app/spring-boot-application.jar
