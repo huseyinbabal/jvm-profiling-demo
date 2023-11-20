@@ -22,7 +22,7 @@ RUN apk add --no-cache curl tar libstdc++
 ARG ASYNC_PROFILER_VERSION="2.9"
 
 RUN cd /tmp && \
-    curl -L https://github.com/jvm-profiling-tools/async-profiler/releases/download/v${ASYNC_PROFILER_VERSION}/async-profiler-${ASYNC_PROFILER_VERSION}-linux-musl-x64.tar.gz -o async-profiler.tar.gz && \
+    curl -L https://profiler.tools/builds/async-profiler-${ASYNC_PROFILER_VERSION}-ea-linux-musl-x64.tar.gz -o async-profiler.tar.gz && \
     tar -xzf async-profiler.tar.gz -C /opt && \
     mv /opt/async-profiler-${ASYNC_PROFILER_VERSION}-linux-musl-x64 /opt/async-profiler && \
     rm /tmp/async-profiler.tar.gz
