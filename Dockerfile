@@ -42,5 +42,5 @@ ENV JAVA_TOOL_OPTIONS_TEMP "-Dcom.sun.management.jmxremote \
                      -Djava.rmi.server.hostname=127.0.0.1"
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "-Xmx1G", "-Xms512M", "/app/spring-boot-application.jar"]
+ENTRYPOINT ["java", "-jar", "-Xmx1G", "-Xms512M", "-XX:+UnlockDiagnosticVMOptions", "-XX:+DebugNonSafepoints", "/app/spring-boot-application.jar"]
 
